@@ -9,4 +9,4 @@ def student(request):
 def teacher(request):
     if not request.session.get('is_login', None):
         return redirect('/login/')
-    return render(request, 'csnova/teacher/project.html')
+    return render(request, 'csnova/teacher/info.html',locals())

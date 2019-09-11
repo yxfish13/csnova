@@ -19,8 +19,8 @@ from django.urls import include
 from csnova import views
 
 urlpatterns = [
-    path('student', views.student),
-    path('teacher', views.teacher),
+    path('student/', views.student),
+    path('teacher/', views.teacher),
     # path('teacher/', views.teacher),
     # path('', views.student),
 ]

@@ -90,6 +90,11 @@ def register(request):
 
     if request.method == 'POST':
         register_form = forms.RegisterForm(request.POST)
+        print("-----------------------")
+        print(request.POST)
+        print("-----------------------")
+        print(register_form)
+        print("-----------------------")
         message = "请检查填写的内容！"
         if register_form.is_valid():
             username = register_form.cleaned_data.get('username')
@@ -97,7 +102,10 @@ def register(request):
             password2 = register_form.cleaned_data.get('password2')
             email = register_form.cleaned_data.get('email')
             sex = register_form.cleaned_data.get('sex')
+            is_teacher = register_form.cleaned_data.get('is_teacher')
 
+            print("is_teacher",is_teacher)
+            
             if password1 != password2:
                 message = '两次输入的密码不同！'
                 return render(request, 'login/register.html', locals())
@@ -116,6 +124,7 @@ def register(request):
                 new_user.password = hash_code(password1)
                 new_user.email = email
                 new_user.sex = sex
+                new_user.is_teacher = is_teacher
                 new_user.save()
 
                 code = make_confirm_string(new_user)

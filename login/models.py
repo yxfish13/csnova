@@ -9,6 +9,10 @@ class User(models.Model):
         ('male', '男'),
         ('female', '女')
     )
+    prof = {
+        ('student',"学生"),
+        ('teacher',"教师"),
+    }
 
     name = models.CharField(max_length=128, unique=True)
     password = models.CharField(max_length=256)
@@ -17,6 +21,8 @@ class User(models.Model):
     c_time = models.DateField(auto_now_add=True)
     has_confirmed = models.BooleanField(default=False)
 
+
+    is_teacher = models.CharField(max_length=32, choices=prof, default='学生')
     def __str__(self):
         return self.name
 
